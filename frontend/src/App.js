@@ -5,14 +5,14 @@ function App() {
   const [novaTarefa, setNovaTarefa] = useState("");
 
   useEffect(() => {
-    fetch('https://backend-ntdwm-luiza.onrender.com')
+    fetch('https://backend-ntdwm-luiza.onrender.com/api/tarefas')
       .then(res => res.json())
       .then(data => setTarefas(data))
       .catch(err => console.error("Erro ao buscar tarefas:", err));
   }, []);
 
   const adicionarTarefa = () => {
-    fetch('https://backend-ntdwm-luiza.onrender.com', {
+    fetch('https://backend-ntdwm-luiza.onrender.com/api/tarefas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: Date.now(), nome: novaTarefa, status: "Pendente" })
